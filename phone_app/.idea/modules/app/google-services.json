@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "685832643188",
+    "project_id": "messageclock-22dd2",
+    "storage_bucket": "messageclock-22dd2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685832643188:android:b14fb85ef38b82c9b32721",
+        "android_client_info": {
+          "package_name": "com.example.phoneapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685832643188-hl3vj526ao9log16f06054844iluq9i0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.phoneapp",
+            "certificate_hash": "f503f8d645930b823da88bbd0a84bc71063e8035"
+          }
+        },
+        {
+          "client_id": "685832643188-qbnm7839prjp0n1c835nk5c6ib6m15f0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWZ6DTtAlFr9gam1-LwG5Ylmjrc1Mnbas"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685832643188-qbnm7839prjp0n1c835nk5c6ib6m15f0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

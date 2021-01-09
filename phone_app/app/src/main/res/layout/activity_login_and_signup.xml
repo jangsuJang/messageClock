@@ -7,14 +7,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.dxdlab.geniauti.ui.signmanagement.AuthViewModel" />
-
+            type="com.example.phoneapp.autentificationmenagement.AuthViewModel"
+            />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.signmanagement.LoginAndSignupActivity">
+        tools:context=".autentificationmenagement.LoginAndSignupActivity">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/Login_container"
