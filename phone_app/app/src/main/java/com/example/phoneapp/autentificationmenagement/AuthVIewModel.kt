@@ -19,6 +19,20 @@ class AuthViewModel() :ViewModel() {
     val TAG = "AuthViewModel"
 
 
+    fun login (email:String?,password: String?){
+        auth.signInWithEmailAndPassword(email!!,password!!)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    if (task.result?.user != null) {
+                        user.value = task.result?.user
+                    }
+                } else {
+                    Log.w(TAG, "loginUserWithEmail:failure", task.exception)
+                }
+            }
+
+    }
+
     fun signup (username:String?, email:String?, password:String?){
         auth.createUserWithEmailAndPassword(email!!, password!!)
             .addOnCompleteListener{ task ->
