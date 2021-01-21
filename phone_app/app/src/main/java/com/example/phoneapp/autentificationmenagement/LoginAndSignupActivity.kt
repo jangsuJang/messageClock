@@ -11,6 +11,7 @@ import com.example.phoneapp.MainActivity
 import com.example.phoneapp.R
 import com.example.phoneapp.databinding.ActivityLoginAndSignupBinding
 import androidx.lifecycle.Observer
+import com.example.phoneapp.setalarm.SetAlarmActivity
 
 class LoginAndSignupActivity : AppCompatActivity() {
     var mViewPager : ViewPager2? = null
@@ -38,7 +39,7 @@ class LoginAndSignupActivity : AppCompatActivity() {
         viewModel.user.observe(this, Observer{ user->
             user?.let{
                 Log.d(TAG, "Login:success")
-                (Intent(this, MainActivity::class.java))
+                startActivity(Intent(this, SetAlarmActivity::class.java))
                 finish()
 
 //                FirestoreRepository.instance.user = viewModel.user.value
