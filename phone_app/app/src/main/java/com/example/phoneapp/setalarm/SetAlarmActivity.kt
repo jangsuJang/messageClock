@@ -12,6 +12,7 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.datetime.datePicker
 import com.afollestad.materialdialogs.datetime.timePicker
 import com.example.phoneapp.R
+import com.example.phoneapp.model.Alarm
 import com.github.thunder413.datetimeutils.DateTimeUtils
 import com.google.android.material.dialog.MaterialDialogs
 import kotlinx.android.synthetic.main.activity_set_alarm.*
@@ -25,6 +26,8 @@ class SetAlarmActivity : AppCompatActivity() {
     var localDate = LocalDate.now()
     var localStartTime = LocalTime.now()
     var localEndTime = LocalTime.now()
+
+    var newAlarm : Alarm? = null
 
 
 
@@ -68,6 +71,9 @@ class SetAlarmActivity : AppCompatActivity() {
         }
 
 //        upload_btn.setOnClickListener {
+//            newAlarm = Alarm()
+//            newAlarm!!.pre_sentence = pre_sentence.text.toString()
+//            newAlarm!!.post_sentence = post_sentence.text.toString()
 //
 //        }
 
