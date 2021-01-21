@@ -34,10 +34,9 @@ class SetAlarmActivity : AppCompatActivity() {
         setContentView(R.layout.activity_set_alarm)
 
 
-
+        //알람 날짜 설정
         alarm_date.setOnClickListener {
             val cal = Calendar.getInstance()
-
             MaterialDialog(this).show {
                 datePicker(currentDate = cal){ dialog, datetime ->
                     localDate = LocalDate.of(datetime.year, datetime.month+1,datetime.dayOfMonth)
@@ -46,17 +45,33 @@ class SetAlarmActivity : AppCompatActivity() {
             }
         }
 
+        //시작 시간 설정
         start_time.setOnClickListener {
             val cal = Calendar.getInstance()
             MaterialDialog(this).show{
                 timePicker(currentTime = cal){ dialog, datetime->
                     localStartTime= LocalTime.of(datetime.time.hours,datetime.time.minutes)
                     setButtonDateAndTime()
-
                 }
-
             }
         }
+
+        //종료 시간 설정
+        end_time.setOnClickListener {
+            val cal = Calendar.getInstance()
+            MaterialDialog(this).show{
+                timePicker(currentTime = cal){ dialog, datetime->
+                    localEndTime= LocalTime.of(datetime.time.hours,datetime.time.minutes)
+                    setButtonDateAndTime()
+                }
+            }
+        }
+
+//        upload_btn.setOnClickListener {
+//
+//        }
+
+
 
     }
 
@@ -65,6 +80,7 @@ class SetAlarmActivity : AppCompatActivity() {
         val timeFormat = DateTimeFormatter.ofPattern("HH시 mm분")
         alarm_date.text = localDate.format(dateFormat)
         start_time.text = localStartTime.format(timeFormat)
+        sample_time.text = start_time.text
 
     }
 
