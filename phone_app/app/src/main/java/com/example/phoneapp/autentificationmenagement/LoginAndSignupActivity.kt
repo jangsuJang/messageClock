@@ -11,6 +11,7 @@ import com.example.phoneapp.MainActivity
 import com.example.phoneapp.R
 import com.example.phoneapp.databinding.ActivityLoginAndSignupBinding
 import androidx.lifecycle.Observer
+import com.example.phoneapp.firebase.FirebaseRepository
 import com.example.phoneapp.setalarm.SetAlarmActivity
 
 class LoginAndSignupActivity : AppCompatActivity() {
@@ -23,6 +24,11 @@ class LoginAndSignupActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if(FirebaseRepository.instance.user!=null){
+            startActivity(Intent(this,SetAlarmActivity::class.java))
+            finish()
+        }
 
 //        setContentView(R.layout.activity_login_and_signup)
         //setting viewModel, liveDate and dataBinding

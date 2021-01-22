@@ -1,4 +1,4 @@
-package com.example.phoneapp.model
+package com.example.phoneapp.launch
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
