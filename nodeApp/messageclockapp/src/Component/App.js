@@ -1,4 +1,4 @@
-import React,{useState,Component} from "react";
+import React,{useState,Component, useEffect} from "react";
 import { ThemeProvider } from "styled-components";
 import GlobasStyles from "../Styles/GlobasStyles";
 import Theme from "../Styles/Theme";
@@ -7,12 +7,26 @@ import firebaseAuth, { authService } from "../Firebase/firebaseAuth"
 
 // firebase.initializeApp(firebaseConfig)
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
+  const [init, setInit] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(()=>{
+    authService.onAuthStateChanged((user) =>{
+      if (user){
+        setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
+      }
+      setInit(true);
+    })
+  },[])
+  // setInterval(()=>{
+    
+  // })
   return (
     <ThemeProvider theme={Theme}>
       <>
         <GlobasStyles/>
-        <AppRouter isLoggedIn={isLoggedIn}/>
+        {init ? <AppRouter isLoggedIn={isLoggedIn}/> : "Initializing..."}
         <footer>&copy; messageClock {new Date().getFullYear()}</footer>
       </>
     </ThemeProvider>
