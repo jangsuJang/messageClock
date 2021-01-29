@@ -3,6 +3,7 @@ import "firebase/auth"
 import firebaseConfig from "../Firebase/firebase.config"
 
 firebase.initializeApp(firebaseConfig)
+firebase.database().ref('/alarms')
 
 // firebase.auth().signInWithEmailAndPassword("jss8882@naver.com", "wkdtkdtn100")
 //           .then((user) =>{
@@ -21,4 +22,7 @@ firebase.initializeApp(firebaseConfig)
 //       });
 
 export const authService = firebase.auth();
+
+// export const fbDatabase = firebase.database().ref('/alarms');
+
 

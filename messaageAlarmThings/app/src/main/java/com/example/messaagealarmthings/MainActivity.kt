@@ -1,5 +1,6 @@
 package com.example.messaagealarmthings
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -17,7 +18,7 @@ import android.os.Bundle
  *
  * You can find additional examples on GitHub: https://github.com/androidthings
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
