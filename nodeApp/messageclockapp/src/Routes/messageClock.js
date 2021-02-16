@@ -1,14 +1,15 @@
 import { authService, fbDatabase } from "Firebase/firebaseAuth";
-import React, {useRef, useState, useEffect} from "react"
-import { useCanvas } from "./CanvasContext";
+import React, {useRef,useContext,createContext ,useState, useEffect} from "react";
+import P5Wrapper from "react-p5-wrapper";
 
 // const messageClock = ()=> "messageClock"
+
+export const messageClockContext = createContext()
 
 const onLogOutClick = () => authService.signOut()
 
 const MessageClock = ({userObj}) => {
     const [alarms, setAlarms] = useState([]);
-    const canvasRef = useRef(null)
     // //비실시간방식 
     // const getAlarms = async () =>{
     //     // console.log(userObj);
@@ -22,13 +23,6 @@ const MessageClock = ({userObj}) => {
     //         setAlarms((prev) =>[alarmsObject, ...prev]);
     //     })
     // }
-    const drawClock = (ctx) =>{
-        ctx.beginPath()
-        ctx.fillStyle = '#000000'
-        ctx.arc(50, 100, 20, 0, 2*Math.PI)
-        ctx.fill()
-
-    }
 
     useEffect(()=>{
         // getAlarms();
@@ -40,19 +34,55 @@ const MessageClock = ({userObj}) => {
             setAlarms(alarmsArray);
         });
 
-        const canvas = canvasRef.current
-        const context = canvas.getContext('2d')
-        drawClock(context)
     },[]);
-    console.log(alarms);
+    // console.log(alarms);
+
+    const Sketch = (p) =>{
+
+        let rotation = 0;
+
+        p.setup = function () {
+            p.createCanvas(800, 800, p.WEBGL);
+        };
+
+        p.myCustomRedrawAccordingToNewPropsHandler = function (props) {
+            if (props.rotation !== null){
+            rotation = props.rotation * Math.PI / 180;
+            }
+        };
+
+        p.draw = function () {
+            p.background(255,255,0);
+            // printAlarm(alarms)
+            // p.normalMaterial();
+            // p.noStroke();
+            // p.push();
+            // p.rotateY(rotation);
+            // p.box(100);
+            // p.pop();
+        };
+
+        const printAlarm = (alarmsList)  =>{
+            console.log(...alarmsList)
+
+        }
+
+        //리스트에 있는 알람 시간과 현재시간을 비교 
+        //지금보여주어야하는 알람 선택
+        //지금 보여주어야하는 알람 표시
+        //몇시에 보여질 알람이 있다는것 보여주기
+        //두개이상의 알람이겹치면?
+
+    };
 
     // const canvasRef = useRef<HTMLCanvasElement>(null);
     return (
-
-        <div className="clockCanvas">
-            "messageClock",
-            <canvas ref={canvasRef} height={5000} width={5000} className="canvas"/>
-        </div>
+        <messageClockContext.Provider value={alarms}>
+            <div className="clockCanvas">
+                "messageClock",
+                <P5Wrapper sketch={Sketch}/>
+            </div>
+        </messageClockContext.Provider>
     )
 
 }
